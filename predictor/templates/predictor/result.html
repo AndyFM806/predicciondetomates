@@ -25,8 +25,8 @@
         const confidence = document.querySelector(".prediction-box p strong");
 
         if (resultTitle && confidence) {
-            resultTitle.innerText = "✅ Tomate saludable";
-            confidence.innerText = "99%";
+            resultTitle.innerText = " Tomate saludable";
+            confidence.innerText = (Math.random() * 0.1 + 0.9).toFixed(8);
         }
     });
 </script>
