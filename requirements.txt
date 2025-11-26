@@ -1,0 +1,5 @@
+Django==5.0
+gunicorn
+tensorflow-cpu==2.16.1
+numpy
+Pillow

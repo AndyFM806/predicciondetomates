@@ -1,0 +1,39 @@
+{% extends 'predictor/base.html' %}
+
+{% block content %}
+<div class="glass-card">
+    <h1>Tomato Quality AI</h1>
+    <p style="text-align:center;opacity:0.8;margin-bottom:25px;">
+        Sube una imagen de un tomate y nuestro modelo IA determinará si es saludable 🍅
+    </p>
+
+    <form id="uploadForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label class="input-file">
+            <span>Haz clic para seleccionar una imagen</span>
+            <input type="file" name="image" id="imageInput" accept="image/*" style="display:none;" required>
+        </label>
+
+        <img id="preview">
+
+        <div class="loader" id="loader"></div>
+
+        <button class="btn-primary" type="submit">Analizar 🍅</button>
+    </form>
+</div>
+
+<script>
+    // Preview de imagen
+    document.getElementById("imageInput").addEventListener("change", function(event) {
+        const img = document.getElementById("preview");
+        img.src = URL.createObjectURL(event.target.files[0]);
+        img.style.display = "block";
+    });
+
+    // Loader
+    document.getElementById("uploadForm").addEventListener("submit", function() {
+        document.getElementById("loader").style.display = "block";
+    });
+</script>
+{% endblock %}
